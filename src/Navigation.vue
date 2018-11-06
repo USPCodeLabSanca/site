@@ -12,33 +12,33 @@
 <script>
   export default {
     name: 'Navigation',
-    methods: { 
-      animationTrigger: function() {
-        var anchors = document.querySelectorAll(".navbar ul li");
+    // methods: { 
+    //   animationTrigger: function() {
+    //     var anchors = document.querySelectorAll(".navbar ul li");
 
-        if(window.scrollY > 50) {
-          navbar.style.background = "white";
-          navbar.style.boxShadow = "0px 3px 5px #1a1a1a";
+    //     if(window.scrollY > 50) {
+    //       navbar.style.background = "white";
+    //       navbar.style.boxShadow = "0px 3px 5px black";
 
-          for(var i = 0, len = anchors.length; i < len; i ++)
-            anchors[i].style.color = '#999';       
-        }
+    //       for(var i = 0, len = anchors.length; i < len; i ++)
+    //         anchors[i].style.color = '#999';       
+    //     }
 
-        else {
-          navbar.style.background = "transparent";
-          navbar.style.boxShadow = "none";
+    //     else {
+    //       navbar.style.background = "transparent";
+    //       navbar.style.boxShadow = "none";
 
-          for(var i = 0, len = anchors.length; i < len; i ++)
-            anchors[i].style.color = 'white';
-        }
-      }
-    },
-    created () {
-      window.addEventListener('scroll', this.animationTrigger);
-    },
-    destroyed () {
-      window.removeEventListener('scroll', this.animationTrigger);
-    }
+    //       for(var i = 0, len = anchors.length; i < len; i ++)
+    //         anchors[i].style.color = 'white';
+    //     }
+    //   }
+    // },
+    // created () {
+    //   window.addEventListener('scroll', this.animationTrigger);
+    // },
+    // destroyed () {
+    //   window.removeEventListener('scroll', this.animationTrigger);
+    // }
   }
 
 </script>
@@ -50,14 +50,16 @@
     position: fixed;
     top: 0px;
     transition: .5s;
+    background: white;
+    box-shadow: 0px 3px 5px #666;
   }
 
   .navbar ul li {
     list-style-type: none;
     display: inline-block;
-    padding: 10px 50px;
+    padding: 0px 30px;
     font-size: 20px;
-    color: white;
+    color: #999;
     font-family: sans-serif;
     cursor: pointer;
     transition: .5s;
@@ -65,11 +67,11 @@
   }
 
   .navbar ul li:hover {
-    color: #1a1a1a;
+    color: #4d4d4d;
   }
 
   .logo {
-    height: 50px;
+    height: 60px;
   }
 
 </style>

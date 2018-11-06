@@ -2,11 +2,6 @@
   <div id="app">
     <Navigation></Navigation>
     <Banner></Banner>
-    <div style="height: 300px;">
-      
-    </style>
-      
-    </div>
   </div>
 </template>
 
