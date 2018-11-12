@@ -1,13 +1,10 @@
 <template>
   <div id="banner" class="banner">
-    <div class="flex-container">
-      <div class="flex-box50">
+    <div class="fluid-container">
+      <div class="half-container">
         <h1 class="title">USPCodeLab Sanca</h1>
-        <span class="welcome-text">
-          Versão mais gostosa do USPCodeLab, xupa ime. Nós também fazemos projetos muito sérios.
-        </span>
       </div>
-      <div class="flex-box50">
+      <div class="half-container">
         <img class="im" src="./assets/clean-logo.png" alt="logo"> 
       </div>
     </div>
@@ -24,29 +21,49 @@
 
   .banner {
     width: 100%;
-    height: 800px;
-    /*background-image: linear-gradient(#4d4d4d, #333);*/
+    height: auto;
+    padding: 50px;
     background-image: linear-gradient(#72d8ca, #00c9ae);
+  }
+
+  .fluid-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
   }
 
   .im {
     border-image: white;
     border-radius: 50%;
     background: white;
-    height: 400px;
+    width: 80%;
+    height: auto;
   }
 
-  .flex-container {
+/*  .flex-container {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-around;
-    padding: 150px 70px 0px 70px;
+    padding: 150px 100px 0px 80px;
     align-items: flex-start;
-  }
+  }*/
 
-  .flex-box50 {
+
+  /*.flex-box50 {
     display: flex;
     flex-wrap: wrap;
+  }*/
+
+  .half-container {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px;
   }
 
   .title {
@@ -54,15 +71,7 @@
     font-weight: 400;
     font-size: 50px;
     color: white;
-    padding-top: 100px;
-  }
-
-  .welcome-text {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    font-size: 25px;
-    color: white;
-    padding: 0px 100px 0px 0px;
+    padding-top: 80px;
   }
 
 </style>

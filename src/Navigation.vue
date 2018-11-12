@@ -1,44 +1,65 @@
 <template>
   <div id="navbar" class="navbar">
-    <ul>
-      <li><img class="logo" src="./assets/logo.png" id="brand"></li>
-      <li>dev.Home()</li>
-      <li>dev.About()</li>
-      <li>dev.Contact()</li>
-    </ul>
+    <div class="navflex">
+      <a href="/" class="na">
+          <img class="logo hidden" src="./assets/logo.png" id="brand">
+          <img class="logo" src="./assets/white-logo.png" id="white_brand">
+      </a>
+      <a href="/" class="na">dev.About()</a>
+      <a href="/" class="na">dev.Projects()</a>
+      <a href="/" class="na">dev.Contact()</a>
+      <a href="/" class="na">dev.Topper()</a>
+      <a v-on:click="open" class="na icon"> &#9776; </a>
+    </div>
+    
+    <Sidenav ref="sidenav"></Sidenav>
   </div>
 </template>
 
 <script>
+  import Sidenav from './Sidenav.vue'
+  
   export default {
     name: 'Navigation',
-    // methods: { 
-    //   animationTrigger: function() {
-    //     var anchors = document.querySelectorAll(".navbar ul li");
+    components: { 'Sidenav': Sidenav },
+    methods: {
 
-    //     if(window.scrollY > 50) {
-    //       navbar.style.background = "white";
-    //       navbar.style.boxShadow = "0px 3px 5px black";
+      open: function() {
+        this.$refs.sidenav.open();
+      },
 
-    //       for(var i = 0, len = anchors.length; i < len; i ++)
-    //         anchors[i].style.color = '#999';       
-    //     }
+      animationTrigger: function() {
+        var anchors = document.querySelectorAll(".navbar .na");
 
-    //     else {
-    //       navbar.style.background = "transparent";
-    //       navbar.style.boxShadow = "none";
+        if(window.scrollY > 20) {
+          navbar.style.background = "white";
+          navbar.style.boxShadow = "0px 3px 5px #666";
+          brand.style.display = "block";
+          white_brand.style.display = "none";
 
-    //       for(var i = 0, len = anchors.length; i < len; i ++)
-    //         anchors[i].style.color = 'white';
-    //     }
-    //   }
-    // },
-    // created () {
-    //   window.addEventListener('scroll', this.animationTrigger);
-    // },
-    // destroyed () {
-    //   window.removeEventListener('scroll', this.animationTrigger);
-    // }
+          for(var i = 0, len = anchors.length; i < len; i ++)
+            anchors[i].style.color = '#999';
+        }
+
+        else {
+          navbar.style.background = "transparent";
+          navbar.style.boxShadow = "none";
+          white_brand.style.display = "block";
+          brand.style.display = "none";
+
+          for(var i = 0, len = anchors.length; i < len; i ++)
+            anchors[i].style.color = 'white';
+        }
+      }
+    },
+
+    created () {
+      window.addEventListener('scroll', this.animationTrigger);
+    },
+
+    destroyed () {
+      window.removeEventListener('scroll', this.animationTrigger);
+    }
   }
 
 </script>
@@ -50,28 +71,50 @@
     position: fixed;
     top: 0px;
     transition: .5s;
-    background: white;
-    box-shadow: 0px 3px 5px #666;
   }
 
-  .navbar ul li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 0px 30px;
+  .navbar .navflex {
+    width: 70%;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px 20px 50px;
+  }
+
+  .navbar .na {
+    color: white;
     font-size: 20px;
-    color: #999;
-    font-family: sans-serif;
     cursor: pointer;
-    transition: .5s;
-    vertical-align: middle;
+    text-decoration: none;
   }
 
-  .navbar ul li:hover {
-    color: #4d4d4d;
+  .navbar .na.icon {
+    display: none !important;
   }
 
   .logo {
     height: 60px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media screen and (max-width: 1007px) {
+    .navbar .navflex { width: 90% }
+    .navbar .na:not(:first-child) { display: none; }
+    .navbar .na.icon {
+      display: inline-flex !important;
+      float: right;
+    }
+  }
+
+  @media screen and (max-width: 470px) {   
+    .navbar .na.icon {
+      display: inline-flex !important;
+    }
+
   }
 
 </style>
